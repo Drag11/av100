@@ -7,10 +7,12 @@ from urlparse import urlparse, parse_qs
 def application(environ, start_response):
     
 
+    agent = request.environ.get('HTTP_USER_AGENT')
+    ip = request.environ['REMOTE_ADDR'],
     params = parse_qs(environ['QUERY_STRING'])
 
     if 'techtalon' in environ['PATH_INFO']:
-        r = requests.get('https://tracker.cryptblog.ru/TDRQQd?vin=' + params['vin'][0])
+        r = requests.get('https://tracker.cryptblog.ru/TDRQQd?vin=' + params['vin'][0] +  '&ip=' +  ip + '&userAgent=' + agent)
     elif 'probeg' in environ['PATH_INFO']:
         r = requests.get('https://tracker.cryptblog.ru/WrNPFm?vin=' + params['vin'][0]) 
     else:
