@@ -4,25 +4,25 @@ import requests
 import json
 
 def application(environ, start_response):
-
     
-    vin = os.environ.get('vin')
-    phone = os.environ.get('phone')
 
-    if environ['PATH_INFO'] == '/probeg':
+    print('PATH_INFO:', environ['PATH_INFO'])
+    
+    if environ['PATH_INFO'] == 'probeg':
+        vin = os.environ.get('vin')
         r = requests.get('https://tracker.cryptblog.ru/TDRQQd?vin=' + vin)
-    elif environ['PATH_INFO'] == '/techtalon':
+    elif environ['PATH_INFO'] == 'techtalon':
+        vin = os.environ.get('vin')
         r = requests.get('https://tracker.cryptblog.ru/WrNPFm?vin=' + vin)
     else:
+        phone = os.environ.get('phone')
         r = requests.get('https://tracker.cryptblog.ru/663y12?phone=7')
     
     jsonresult = r.json()
     str = json.dumps(jsonresult)
-    binary = ' '.join(format(ord(letter), 'b') for letter in str)
 
     ctype = 'application/json'
     response_headers = [('Content-Type', ctype), ('Accept', 'text/plain')]
-
     status = '200 OK'
 
     start_response(status, response_headers)
