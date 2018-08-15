@@ -7,8 +7,8 @@ from urlparse import urlparse, parse_qs
 def application(environ, start_response):
     
 
-    agent = request.environ.get('HTTP_USER_AGENT')
-    ip = request.environ['REMOTE_ADDR'],
+    agent = requests.environ.get('HTTP_USER_AGENT')
+    ip = requests.environ['REMOTE_ADDR'],
     params = parse_qs(environ['QUERY_STRING'])
 
     if 'techtalon' in environ['PATH_INFO']:
