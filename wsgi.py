@@ -16,8 +16,8 @@ def application(environ, start_response):
     else:
         r = requests.get('https://tracker.cryptblog.ru/663y12?phone=7')
     
-    json = r.json()
-    str = json.dumps(json)
+    jsonresult = r.json()
+    str = json.dumps(jsonresult)
     binary = ' '.join(format(ord(letter), 'b') for letter in str)
 
     ctype = 'application/json'
