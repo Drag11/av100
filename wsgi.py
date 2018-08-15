@@ -21,11 +21,11 @@ def application(environ, start_response):
     binary = ' '.join(format(ord(letter), 'b') for letter in str)
 
     ctype = 'application/json'
-    response_headers = [('Content-Type', ctype)]
+    response_headers = [('Content-Type', ctype), ('Accept': 'text/plain')]
 
     status = '200 OK'
 
     start_response(status, response_headers)
 
 
-    return [binary]
+    return [str]
