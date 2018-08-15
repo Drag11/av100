@@ -6,11 +6,11 @@ import json
 def application(environ, start_response):
     
 
-    print('PATH_INFO:', environ['PATH_INFO'])
+    params = parse_qs(environ['QUERY_STRING'])  #  Here you get the values in a dict!
+    print params
 
     if '/probeg' in environ['PATH_INFO']:
-        vin = os.environ.get('vin')
-        r = requests.get('https://tracker.cryptblog.ru/TDRQQd?vin=' + vin)
+        r = requests.get('https://tracker.cryptblog.ru/TDRQQd?vin=' + params['vin'])
     elif '/techtalon' in environ['PATH_INFO']:
         vin = os.environ.get('vin')
         r = requests.get('https://tracker.cryptblog.ru/WrNPFm?vin=' + vin)
