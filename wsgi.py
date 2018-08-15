@@ -2,6 +2,7 @@
 import os
 import requests
 import json
+from urlparse import parse_qs
 
 def application(environ, start_response):
     
