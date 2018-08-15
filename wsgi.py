@@ -17,7 +17,6 @@ def application(environ, start_response):
         r = requests.get('https://tracker.cryptblog.ru/663y12?phone=7')
     
     json = r.json()
-    test1 = json.encode('utf-8')
 
     ctype = 'application/json'
     response_headers = [('Content-Type', ctype)]
@@ -26,4 +25,4 @@ def application(environ, start_response):
 
     start_response(status, response_headers)
 
-    return [test1]
+    return [json]
