@@ -18,11 +18,10 @@ def application(environ, start_response):
     
     r.json()
 
-    test1 = r.encode('utf-8') 
     response_headers = [('Content-Type', ctype)]
 
     status = '200 OK'
 
     start_response(status, response_headers)
 
-    return [test1]
+    return [r]
