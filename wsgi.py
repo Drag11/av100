@@ -9,13 +9,11 @@ def application(environ, start_response):
 
     params = parse_qs(environ['QUERY_STRING'])
 
-    if '/probeg' in environ['PATH_INFO']:
+    if '/techtalon' in environ['PATH_INFO']:
         r = requests.get('https://tracker.cryptblog.ru/TDRQQd?vin=' + params['vin'][0])
-    elif '/techtalon' in environ['PATH_INFO']:
-        vin = os.environ.get('vin')
+    elif '/probeg' in environ['PATH_INFO']:
         r = requests.get('https://tracker.cryptblog.ru/WrNPFm?vin=' + params['vin'][0])
     elif '/phone' in environ['PATH_INFO']:
-        phone = os.environ.get('phone')
         r = requests.get('https://tracker.cryptblog.ru/663y12?phone=7' + params['phone'][0])
     
     jsonresult = r.json()
