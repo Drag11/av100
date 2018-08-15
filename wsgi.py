@@ -7,8 +7,8 @@ def application(environ, start_response):
     
 
     print('PATH_INFO:', environ['PATH_INFO'])
-    
-    if environ['PATH_INFO'] == 'probeg':
+
+    if '/probeg/' in environ['PATH_INFO']:
         vin = os.environ.get('vin')
         r = requests.get('https://tracker.cryptblog.ru/TDRQQd?vin=' + vin)
     elif environ['PATH_INFO'] == 'techtalon':
