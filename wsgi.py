@@ -6,7 +6,7 @@ import json
 def application(environ, start_response):
 
     ctype = 'application/json'
-    vin = os.environ['vin']
+    vin = os.environ.get('vin')
     if environ['PATH_INFO'] == '/probeg':
         r = requests.get('https://tracker.cryptblog.ru/TDRQQd?vin=' + vin)
     elif environ['PATH_INFO'] == '/techtalon':
