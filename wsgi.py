@@ -21,7 +21,7 @@ def application(environ, start_response):
     binary = ' '.join(format(ord(letter), 'b') for letter in str)
 
     ctype = 'application/json'
-    response_headers = [('Content-Type', ctype), ('Accept': 'text/plain')]
+    response_headers = [('Content-Type', ctype), ('Accept', 'text/plain')]
 
     status = '200 OK'
 
