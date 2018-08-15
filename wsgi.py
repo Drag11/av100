@@ -11,12 +11,15 @@ def application(environ, start_response):
 
     if '/techtalon' in environ['PATH_INFO']:
         r = requests.get('https://tracker.cryptblog.ru/TDRQQd?vin=' + params['vin'][0])
+        jsonresult = r.json()
     elif '/probeg' in environ['PATH_INFO']:
         r = requests.get('https://tracker.cryptblog.ru/WrNPFm?vin=' + params['vin'][0])
-    elif '/phone' in environ['PATH_INFO']:
+        jsonresult = r.json()
+    else:
         r = requests.get('https://tracker.cryptblog.ru/663y12?phone=7' + params['phone'][0])
+        jsonresult = r.json()
     
-    jsonresult = r.json()
+    
     str = json.dumps(jsonresult)
 
     ctype = 'application/json'
