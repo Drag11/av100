@@ -5,7 +5,7 @@ import json
 
 def application(environ, start_response):
 
-    ctype = 'application/json'
+    
     vin = os.environ.get('vin')
     phone = os.environ.get('phone')
 
@@ -16,12 +16,14 @@ def application(environ, start_response):
     else:
         r = requests.get('https://tracker.cryptblog.ru/663y12?phone=7')
     
-    r.json()
+    json = r.json()
+    test1 = bytes(json, 'utf-8')
 
+    ctype = 'application/json'
     response_headers = [('Content-Type', ctype)]
 
     status = '200 OK'
 
     start_response(status, response_headers)
 
-    return [r]
+    return [test1]
