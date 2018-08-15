@@ -11,7 +11,7 @@ def application(environ, start_response):
     print params
 
     if '/probeg' in environ['PATH_INFO']:
-        r = requests.get('https://tracker.cryptblog.ru/TDRQQd?vin=' + params['vin'])
+        r = requests.get('https://tracker.cryptblog.ru/TDRQQd?vin=' + params['vin'][0])
     elif '/techtalon' in environ['PATH_INFO']:
         vin = os.environ.get('vin')
         r = requests.get('https://tracker.cryptblog.ru/WrNPFm?vin=' + vin)
