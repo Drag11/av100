@@ -17,10 +17,10 @@ def application(environ, start_response):
     r.json()
 
     response.out.write(r.dumps(response))
-    response_headers = [('Content-Type', ctype), ('Content-Length', str(len(response_body)))]
+    response_headers = [('Content-Type', ctype)]
 
     status = '200 OK'
 
     start_response(status, response_headers)
 
-return [response_body]
+    return [response_body]
