@@ -12,11 +12,11 @@ def application(environ, start_response):
     params = parse_qs(environ['QUERY_STRING'])
 
     if 'techtalon' in environ['PATH_INFO']:
-        r = requests.get('https://tracker.cryptblog.ru/TDRQQd?vin=' + params['vin'][0] +  '&ip=' +  ip + '&userAgent=' + agent)
+        r = requests.get('https://tracker.cryptblog.ru/TDRQQd?vin=' + params['vin'][0] + '&ip=' +  ip + '&userAgent=' + agent)
     elif 'probeg' in environ['PATH_INFO']:
-        r = requests.get('https://tracker.cryptblog.ru/WrNPFm?vin=' + params['vin'][0]) 
+        r = requests.get('https://tracker.cryptblog.ru/WrNPFm?vin=' + params['vin'][0] + '&ip=' +  ip + '&userAgent=' + agent) 
     else:
-        r = requests.get('https://tracker.cryptblog.ru/663y12?phone=7' + params['phone'][0])
+        r = requests.get('https://tracker.cryptblog.ru/663y12?phone=7' + params['phone'][0] + '&ip=' +  ip + '&userAgent=' + agent)
     
     
     jsonresult = r.json()
