@@ -14,7 +14,9 @@ def application(environ, start_response):
     if 'techtalon' in environ['PATH_INFO']:
         r = requests.get('https://tracker.cryptblog.ru/TDRQQd?vin=' + params['vin'][0] + '&ip=' +  ip + '&userAgent=' + agent)
     elif 'probeg' in environ['PATH_INFO']:
-        r = requests.get('https://tracker.cryptblog.ru/WrNPFm?vin=' + params['vin'][0] + '&ip=' +  ip + '&userAgent=' + agent) 
+        fulladdress =  'https://tracker.cryptblog.ru/WrNPFm?vin=' + params['vin'][0] + '&ip=' +  ip + '&userAgent=' + agent
+        r = requests.get(fulladdress) 
+        print('fulladdress: ' + fulladdress)
     else:
         r = requests.get('https://tracker.cryptblog.ru/663y12?phone=7' + params['phone'][0] + '&ip=' +  ip + '&userAgent=' + agent)
     
