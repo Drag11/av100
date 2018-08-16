@@ -21,10 +21,10 @@ def application(environ, start_response):
         r = requests.get('https://tracker.cryptblog.ru/663y12?phone=7' + params['phone'][0] + '&ip=' +  ip + '&userAgent=' + agent)
     
     
-    print('r headers: ' + r.headers)
-    print('r encoding: ' + r.encoding)
-    print('r text: ' + r.text)
-    print('r status: ' + r.status_code)
+    print(r.headers)
+    print(r.encoding)
+    print(r.text)
+    print(r.status_code)
     jsonresult = r.json()
     str = json.dumps(jsonresult)
 
